@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const form = document.querySelector('#new-form');
   form.addEventListener('submit', handleFormSubmit);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete All';
+
+  const listHeader = document.querySelector('#list-header');
+  listHeader.appendChild(deleteButton);
+
+  deleteButton.addEventListener('click', deleteAll);
 })
 
 const handleFormSubmit = function (event) {
@@ -16,4 +24,17 @@ const handleFormSubmit = function (event) {
   pokemonName.textContent = `${event.target.name.value}`;
   pokemonEntry.appendChild(pokemonName);
 
+  const pokemonTrainer = document.createElement('h4');
+  pokemonTrainer.textContent = `Trainer: ${event.target.trainer.value}`;
+  pokemonEntry.appendChild(pokemonTrainer);
+
+  const pokemonType = document.createElement('h6');
+  pokemonType.textContent = `${event.target.type.value}`;
+  pokemonEntry.appendChild(pokemonType);
+
+  document.getElementById('new-form').reset();
+}
+
+const deleteAll = function () {
+  document.getElementById('pokemon-list').innerHTML = '';
 }
