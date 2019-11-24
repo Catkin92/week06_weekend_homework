@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('#new-form');
   form.addEventListener('submit', handleFormSubmit);
 
+
+
   const deleteButton = document.createElement('button');
   deleteButton.textContent = 'Delete All';
 
@@ -11,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   listHeader.appendChild(deleteButton);
 
   deleteButton.addEventListener('click', deleteAll);
+
+  // document.getElementById('pokemon-list').style.background = 'green';
 })
 
 const handleFormSubmit = function (event) {
@@ -19,6 +23,8 @@ const handleFormSubmit = function (event) {
   const pokemonList = document.querySelector('ul');
   const pokemonEntry = document.createElement('li');
   pokemonList.appendChild(pokemonEntry);
+
+  pokemonEntry.classList.add(event.target.type.value.toLowerCase());
 
   const pokemonName = document.createElement('h2');
   pokemonName.textContent = `${event.target.name.value}`;
